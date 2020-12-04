@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     ip_info_t ip_info;
 
     if (get_ip(server_access.connection_info.hostname, &ip_info)) {
-        fprintf(stderr, "Invalid hostname\n");
+        fprintf(stderr, "Invalid hostname %s\n", server_access.connection_info.hostname);
         exit(3);
     }
 
@@ -33,14 +33,14 @@ int main(int argc, char **argv) {
         exit(4);
     }
 
-    printf("Connection established.\n");
+    printf("Connection established\n");
 
     if (login(fd, server_access)) {
         fprintf(stderr, "Could not login\n");
         exit(5);
     }
 
-    printf("Login successfully.\n");
+    printf("Login successfully\n");
 
     int data_fd;
 
@@ -49,7 +49,16 @@ int main(int argc, char **argv) {
         exit(6);
     }
 
-    printf("Connection established with data connection.\n");
+    printf("Connection established with data connection\n");
+
+    if (retrieve_file(fd, server_access)) {
+        fprintf(stderr, "Could not enter retrieve file\n");
+        exit(6);
+    }
+
+    printf("File retrieved\n");
+
+    save_file(data_fd, server_access);
 
     exit(0);
 }

@@ -45,8 +45,12 @@ typedef struct ip_info_t {
 
 int get_server_access(char* string, ftp_server_access_t* access);
 
+void print_server_access(ftp_server_access_t* access);
+
 void _read_capture_group(regmatch_t* groups, size_t group, char* string, char* output);
 
 int get_ip(char* ip, ip_info_t* ip_info);
+
+int get_filename(char* path, char* filename);
 
 #endif

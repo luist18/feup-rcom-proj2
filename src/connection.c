@@ -78,18 +78,26 @@ int read_from(int socket_fd, char *message) {
 int login(int socket_fd, ftp_server_access_t server_access) {
     char login_cmd[MAX_SIZE], pass_cmd[MAX_SIZE], tmp_buffer[MAX_SIZE];
 
-    sprintf(login_cmd, "USER %s\n", server_access.connection_info.user);
-    sprintf(pass_cmd, "PASS %s\n", server_access.connection_info.pass);
+    sprintf(login_cmd, "user %s\n", server_access.connection_info.user);
+    sprintf(pass_cmd, "pass %s\n", server_access.connection_info.pass);
 
-    if (send_to(socket_fd, login_cmd))
-        return 1;
+    if (send_to(socket_fd, login_cmd)) return 1;
+
+    read_from(socket_fd, tmp_buffer);
+
+    if (strstr(tmp_buffer, "This FTP server is anonymous only.") != NULL) {
+        fprintf(stderr, "Could not login: This FTP server is anonymous only.\n");
+        exit(5);
+    }
+
+    if (send_to(socket_fd, pass_cmd)) return 1;
 
     read_from(socket_fd, tmp_buffer);
 
-    if (send_to(socket_fd, pass_cmd))
-        return 1;
-
-    read_from(socket_fd, tmp_buffer);
+    if (strstr(tmp_buffer, "Login successful") == NULL) {
+        fprintf(stderr, "Could not login: Login incorrect.\n");
+        exit(5);
+    }
 
     return 0;
 }
@@ -97,7 +105,7 @@ int login(int socket_fd, ftp_server_access_t server_access) {
 int pasv_mode(int socket_fd) {
     char tmp_buffer[MAX_SIZE];
 
-    if (send_to(socket_fd, "PASV\n"))
+    if (send_to(socket_fd, "pasv\n"))
         return -1;
 
     read_from(socket_fd, tmp_buffer);
@@ -126,9 +134,33 @@ int retrieve_file(int socket_fd, ftp_server_access_t server_access) {
 
     read_from(socket_fd, tmp_buffer);
 
+    if (strstr(tmp_buffer, "Failed to open file") != NULL) {
+        fprintf(stderr, "Could not retrieve file: Failed to open file.\n");
+        exit(6);
+    }
+
     return 0;
 }
 
 int save_file(int socket_fd, ftp_server_access_t server_access) {
+    FILE *file_to_write;
+    int bytes;
+    char buf[MAX_SIZE];
+
+    char filename[MAX_SIZE];
+
+    get_filename(server_access.path, filename);
+
+    if (!(file_to_write = fopen(filename, "w")))
+        return 1;
+
+    while ((bytes = read(socket_fd, buf, sizeof(buf))) > 0) {
+        if ((bytes = fwrite(buf, bytes, 1, file_to_write)) < 0)
+            return 1;
+    }
+
+    fclose(file_to_write);
+    close(socket_fd);
+
     return 0;
 }
