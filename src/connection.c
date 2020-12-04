@@ -164,3 +164,7 @@ int save_file(int socket_fd, ftp_server_access_t server_access) {
 
     return 0;
 }
+
+int disconnect(int socket_fd) {
+    return send_to(socket_fd, "quit\n");
+}

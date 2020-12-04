@@ -38,19 +38,56 @@ typedef struct ftp_server_access_t {
     char path[256];                        /* Access path */
 } ftp_server_access_t;
 
+/**
+ * @brief Information of the IP address.
+ */
 typedef struct ip_info_t {
-    char hostname[256];
-    char ip[256];
+    char hostname[256]; /* The hostname */
+    char ip[256];       /* The IP */
 } ip_info_t;
 
+/**
+ * @brief Gets the server access struct.
+ * 
+ * @param string    ftp url string
+ * @param access    ftp_server_access_t struct pointer
+ * @return 0 if succeeded, any other number otherwise
+ */
 int get_server_access(char* string, ftp_server_access_t* access);
 
+/**
+ * @brief Prints the server access struct information.
+ * 
+ * @param access    ftp_server_access_t struct pointer
+ */
 void print_server_access(ftp_server_access_t* access);
 
+/**
+ * @brief Reads a captured group from a regex.
+ * 
+ * @param groups    the groups
+ * @param group     the group
+ * @param string    the string
+ * @param output    the captured group
+ */
 void _read_capture_group(regmatch_t* groups, size_t group, char* string, char* output);
 
+/**
+ * @brief Get the ip info struct.
+ * 
+ * @param ip        the ip
+ * @param ip_info   the ip_info_t struct
+ * @return 0 if succeeded, any other number otherwise
+ */
 int get_ip(char* ip, ip_info_t* ip_info);
 
+/**
+ * @brief Get the filename of a path.
+ * 
+ * @param path      the path
+ * @param filename  the filename
+ * @return 0 if succeeded, any other number otherwise
+ */
 int get_filename(char* path, char* filename);
 
 #endif
