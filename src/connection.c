@@ -90,6 +90,9 @@ int login(int socket_fd, ftp_server_access_t server_access) {
         exit(5);
     }
 
+    if (strstr(tmp_buffer, "Login successful") != NULL)
+        return 0;
+
     if (send_to(socket_fd, pass_cmd)) return 1;
 
     read_from(socket_fd, tmp_buffer);
