@@ -16,8 +16,8 @@ The objective of this experience is to connect two computers (*tux1* and *tux4*)
 Configuring *tux1*:
 
 ```bash
-ifconfig eth0 172.16.20.1/24
 ifconfig eth0 up
+ifconfig eth0 172.16.20.1/24
 
 route add -net 172.16.20.0/24 gw 172.16.20.254
 ```
@@ -25,8 +25,8 @@ route add -net 172.16.20.0/24 gw 172.16.20.254
 Configuring *tux4*:
 
 ```bash
-ifconfig eth0 172.16.20.254/24
 ifconfig eth0 up
+ifconfig eth0 172.16.20.254/24
 
 route add -net 172.16.20.0/24 gw 172.16.20.1
 ```
