@@ -46,7 +46,8 @@ TCP (Transmission Control Protocol) utilizes the ARQ (Automatic Repeat Request) 
 
 
 
-### How does the TCP congestion control mechanism work? What are the relevant fields. How did the throughput of the data connection evolve along the time? Is it according the TCP congestion control mechanism?
+### How does the TCP congestion control mechanism work? What are the relevant fields? How did the throughput of the data connection evolve along the time? Is it according the TCP congestion control mechanism?
 
 
 ### Is the throughput of a TCP data connections disturbed by the appearance of a second TCP connection? How?
+With the appearance of a second TCP connection, the existence of a simultaneous data transfer can lead to a drop in the transmission rate, since the transfer is distributed equally for each connection.
