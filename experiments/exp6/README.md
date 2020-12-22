@@ -38,9 +38,9 @@ A TCP connection has three fases: establishment of the connection, data transfer
 ### How does the ARQ TCP mechanism work? What are the relevant TCP fields? What relevant information can be observed in the logs?
 
 TCP (Transmission Control Protocol) utilizes the ARQ (Automatic Repeat Request) mechanism with the "Sliding Window" method. That way, it uses:
-- __acknowledgment numbers__, which are present in one of the fields of the messages sent by the receptor which indicate which frame was received correctly;
-- __window size__, which indicates the range of packets that the emitter can send;
-- __sequence number__, which represents the number of the frame to be sent. 
+- __acknowledgment numbers__ - Ack, which are present in one of the fields of the messages sent by the receptor which indicate which frame was received correctly;
+- __window size__ - Win, which indicates the range of packets that the emitter can send;
+- __sequence number__ - Seq, which represents the number of the frame to be sent. 
 
 ![](./snippet.png)
 
