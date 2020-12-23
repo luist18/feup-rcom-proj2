@@ -13,7 +13,12 @@ The objective of this experience is to (...)
 
 ## 1.1. Plan
 
-***
+Compiling our application in *tux3*
+
+```bash
+# While in the root of the application directory
+make
+```
 
 ## 1.2. Overview
 
