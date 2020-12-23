@@ -1,6 +1,6 @@
 # 1. Experience 4: configure a commercial router and implement NAT
 
-The objective of this experience is to configure a commercial router and implement NAT. 
+In this experiment a commercial router without NAT was first configured by connecting it to the laboratory network. The router was then configured with NAT, allowing network computers to access the Internet. 
 
 ## Table of Contents<!-- omit in toc -->
 

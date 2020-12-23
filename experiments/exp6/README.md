@@ -1,6 +1,6 @@
-# 1. Experience 6: TCP Connections
+# 1. Experience 6: TCP Connections  
 
-The objective of this experience is to (...)
+In this experiment the TCP protocol's behavior was observed using the application developed in the first stage of the work.
 
 ## Table of Contents<!-- omit in toc -->
 
@@ -26,12 +26,12 @@ Our FTP application opens two TCP connections: one for control, to send the FTP 
 
 The FTP control information is transported in the _control_ connection, i.e. the one responsible for sending the commands to the server.
 
-A TCP connection has three fases: establishment of the connection, data transfer and connection termination.
+A TCP connection has three phases: establishment of the connection, data transfer and connection termination.
 
-TCP (Transmission Control Protocol) utilizes the ARQ (Automatic Repeat Request) mechanism with the "Sliding Window" method. That way, it uses:
-- __acknowledgment numbers__ - Ack, which are present in one of the fields of the messages sent by the receptor which indicate which frame was received correctly;
-- __window size__ - Win, which indicates the range of packets that the emitter can send;
-- __sequence number__ - Seq, which represents the number of the frame to be sent. 
+TCP (Transmission Control Protocol) utilizes the ARQ (Automatic Repeat Request) mechanism with the _Sliding Window_ method. That way, it uses:
+- __acknowledgment numbers__ - represented by the field _Ack_, which are present in one of the fields of the messages sent by the receptor which indicate which frame was received correctly;
+- __window size__ - represented by the field _Win_, which indicates the range of packets that the emitter can send;
+- __sequence number__ - represented by the field _Seq_, which represents the number of the frame to be sent. 
 
 ![](./snippet.png)
 

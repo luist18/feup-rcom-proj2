@@ -1,6 +1,6 @@
 # 1. Experience 5: DNS
 
-The objective of this experience is to (...)
+In this experiment it was necessary to configure the DNS (Domais Name System) in each _tux_. A DNS server, in this case services.netlab.fe.up.pt, contains a database of public IP addresses and their respective hostnames. It is used to translate the hostnames to their respective IP addresses. 
 
 ## Table of Contents<!-- omit in toc -->
 
@@ -28,7 +28,7 @@ That file will need to have the following information:
 
 Where __netlab.fe.up.pt__ is the name of the DNS server and 172.16.1.1 its IP address. 
 
-Initially, the host sends a packet to the server (line 8 ), which contains the desired _hostname_, asking for its IP address.  
+Initially, the host sends a packet to the server (line 8), which contains the desired _hostname_, asking for its IP address.  
 The server responds with a packet that contains the IP address of the _hostname_ (line 11).
 
 
