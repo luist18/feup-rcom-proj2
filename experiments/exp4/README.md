@@ -13,7 +13,42 @@ The objective of this experience is to configure a commercial router and impleme
 
 ## 1.1. Plan
 
-***
+Configuring *router*:
+
+```bash
+interface gigabitethernet 0/0                 
+ip address 172.16.21.254    255.255.255.0
+no shutdown 
+exit 
+```
+
+Adding IP to allow communication from port GE1
+
+```bash
+interface gigabitethernet 0/1                 
+ip address 172.16.1.29    255.255.255.0      
+no shutdown 
+exit 
+```
+
+
+
+Adding port 5 (where the port GE0 is connected) to vlan 21:
+
+```bash
+configure terminal
+interface fastethernet 0/5             
+switchport mode access
+switchport access vlan 21
+end
+```
+
+Add routes for 172.16.20.0/24 in tux2 and Rc
+```bash
+ip route 0.0.0.0 0.0.0.0 172.16.1.254 
+ip route 172.16.20.0 255.255.255.0 172.16.21.253
+```
+
 
 ## 1.2. Overview
 
