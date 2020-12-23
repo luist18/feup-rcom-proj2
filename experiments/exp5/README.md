@@ -13,7 +13,10 @@ The objective of this experience is to (...)
 
 ## 1.1. Plan
 
-***
+Configuring the DNS in each *tux*
+```bash
+echo $'search netlab.fe.up.pt\nnameserver 172.16.1.1' > /etc/resolv.conf
+```
 
 ## 1.2. Overview
 
