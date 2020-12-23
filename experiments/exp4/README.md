@@ -7,7 +7,6 @@ The objective of this experience is to configure a commercial router and impleme
 - [1. Experience 4: configure a commercial router and implement NAT](#1-experience-4-configure-a-commercial-router-and-implement-nat)
   - [1.1. Plan](#11-plan)
   - [1.2. Overview](#12-overview)
-  - [1.3. Questions](#13-questions)
 
 ***
 
@@ -52,27 +51,17 @@ ip route 172.16.20.0 255.255.255.0 172.16.21.253
 
 ## 1.2. Overview
 
-TODO
-
-***
-## 1.3 Questions
-
-### How to configure a static route in a commercial router?
-
-Initially, we need to connect the port T3 to the port S0 of the TUX that we want to be connected to the router. Subsequently, we need to connect the port T4 to the router console.  
-
-Aftewards, we need to access the GTKTerm of the chosen TUX and execute the following commands:
-        
-    > configure terminal
-    > ip route [destination route ip] [mask] [ip gateway]
-    > exit
 
 
-### What are the paths followed by the packets in the experiments carried out and why?
+To configure a static route in a commercial router we need to, firstly, connect the port T3 to the port S0 of the TUX that we want to be connected to the router. Subsequently, we need to connect the port T4 to the router console.  Afterwards, we need to access the GTKTerm of the chosen TUX and execute the following commands:
+
+```bash
+configure terminal
+ip route [destination route ip] [mask] [ip gateway]
+exit
+```
 
 In case the route exists, the packets will use that same route. Otherwise, the packets will follow the default route (to the router), the router will inform that TUX4 exists and the packets will be sent to it. 
-
-### How to configure NAT in a commercial router?  
 
 To configure NAT in a commercial router, we need to execute the following commands from the GTKTerm of the chosen TUX.
 
@@ -99,9 +88,6 @@ To configure NAT in a commercial router, we need to execute the following comman
     ip route 172.16.y0.0 255.255.255.0 172.16.y1.253
     end
 
-
-
-### What does NAT do?
 
 NAT, which stands for Network Address Translation, allows a single device, such as a router, to act as an agent between the public network and a local network, meaning that only a single unique IP address is required to represent an entire group of computers to anything outside their network. 
  
